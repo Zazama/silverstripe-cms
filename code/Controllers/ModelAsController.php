@@ -119,7 +119,8 @@ class ModelAsController extends Controller implements NestedController
     {
         $request = $this->getRequest();
 
-        if (!$URLSegment = $request->param('URLSegment')) {
+        $URLSegment = $request->param('URLSegment');
+        if ($URLSegment === null) {
             throw new Exception('ModelAsController->getNestedController(): was not passed a URLSegment value.');
         }
 
